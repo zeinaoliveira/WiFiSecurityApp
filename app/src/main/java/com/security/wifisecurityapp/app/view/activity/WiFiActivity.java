@@ -48,7 +48,7 @@ public class WiFiActivity extends AppCompatActivity {
         wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
 
         wifiInfoBO = new WiFiInfoBO();
-        wifiList = new ArrayList<InfoWiFi>();
+        wifiList = new ArrayList<>();
 
         informationDialog = new AlertDialog.Builder(this).create();
     }
@@ -106,7 +106,7 @@ public class WiFiActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.refresh:
-                //   refresh();
+                refresh();
                 return true;
             case R.id.action_about:
                 showAbout();
@@ -122,7 +122,6 @@ public class WiFiActivity extends AppCompatActivity {
     }
 
     public void refresh() {
-
 
         progressBar = ProgressDialog.show(this, getString(R.string.refresh), getString(R.string.refreshing), false,false);
 

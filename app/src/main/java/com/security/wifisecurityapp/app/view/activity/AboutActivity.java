@@ -14,9 +14,9 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-////        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-////        this.getSupportActionBar().setIcon(R.color.green_pass);
-//        getSupportActionBar().setTitle(R.string.about);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setIcon(R.color.green_pass);
+        getSupportActionBar().setTitle(R.string.about);
         setContentView(R.layout.about_activity);
     }
 

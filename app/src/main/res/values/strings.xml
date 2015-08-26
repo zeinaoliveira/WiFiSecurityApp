@@ -22,15 +22,14 @@
     <string name="security_level">"Nivel de segurança"</string>
     
     <string name="txtAboutParameters">
-        O WiFi Security analisa as configurações de cada roteador e calcula um grau de segurança baseado nas caracteristicas abaixo: \n\n
-        • SSID (1 - Oculta, 2 - SSID alterado pelo administrador, 3 - Nome padrão do fabricante) \n
-        • Frequência (1 - 5 GHz ou 2 - 2,4 GHz) \n
-        • Criptografia (1 - WPA2, 2 - WPA ou 3 - WEP/Sem criptografia)\n
-        • Utilização de WPS (1 - Indisponível ou 2 - Disponível)\n
+        O WiFiSecurity analisa as configurações do roteador e calcula um grau de segurança baseado nas caracteristicas abaixo: \n\n
+        • SSID \n(1 - Oculta, 2 - SSID alterado, 3 - Nome padrão)\n
+        • Frequência \n(1 - 5 GHz ou 2 - 2,4 GHz)\n
+        • Criptografia \n(1 - WPA2, 2 - WPA ou 3 - WEP/Sem criptografia)\n
+        • Uso do WPS \n(1 - Indisponível ou 2 - Disponível)\n
         
         A rede é considerada segura, caso ela tenha pelo menos 70% de aprovação. Para sua facilidade, as redes seguras estão sinalizadas na cor Verde.
         
    	</string>
-
 
 </resources>
