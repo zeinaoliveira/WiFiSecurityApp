@@ -26,16 +26,16 @@ import java.util.List;
 public class WiFiActivity extends AppCompatActivity {
 
 
-    TextView txtEmptyList;
-    TextView editWiFi;
-    ListView lstWifiRouter;
-    InfoWiFi wifiInfo;
-    List<InfoWiFi> wifiList;
-    WifiManager wifiManager;
-    WiFiInfoBO wifiInfoBO;
-    WiFiRouterAdapter adapter;
-    AlertDialog informationDialog;
-    ProgressDialog progressBar;
+    private TextView txtEmptyList;
+    private TextView editWiFi;
+    private ListView lstWifiRouter;
+    private InfoWiFi wifiInfo;
+    private List<InfoWiFi> wifiList;
+    private WifiManager wifiManager;
+    private WiFiInfoBO wifiInfoBO;
+    private WiFiRouterAdapter adapter;
+    private AlertDialog informationDialog;
+    private ProgressDialog progressBar;
 
     /**
      * Initialize objects.
@@ -156,7 +156,6 @@ public class WiFiActivity extends AppCompatActivity {
                 wifiInfo.setCapabilities(wifiManager.getScanResults().get(i).capabilities);
                 wifiInfo.setSsid(wifiManager.getScanResults().get(i).SSID);
                 wifiInfo.setFrequency(wifiManager.getScanResults().get(i).frequency);
-//	    		wifiInfo.setTimestamp(wifiManager.getScanResults().get(i).timestamp);
                 wifiInfo.setSecurityofRouter(wifiInfoBO.getSecurityofRouter(wifiInfo));
                 wifiList.add(wifiInfo);
 
