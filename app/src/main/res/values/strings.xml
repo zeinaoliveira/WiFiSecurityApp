@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WiFi Security</string>
+
+    <!-- Menu option -->
+    <string name="refresh">Atualizar</string>
+    <string name="refreshing">Atualizando</string>
+    <string name="about">Sobre</string>
+
+    <string name="action_settings">Configurações</string>
+    <string name="emptyList">Nenhum roteador encontrado.
+        \nVerifique sua conexão com a internet.</string>
+    <string name="hiddenSSID"> Rede oculta </string>
+
+    <string name="refresh_list">"Lista Atualizada"</string>
+    <string name="ssid">"SSID"</string>
+    <string name="network_information">"Informações sobre a Rede"</string>
+    <string name="frequency">"Frequência"</string>
+    <string name="timestamp">"Timestamp"</string>
+    <string name="capabilities">"Capacidades"</string>
+    <string name="security_level">"Nivel de segurança"</string>
+    
+    <string name="txtAboutParameters">
+        O WiFi Security analisa as configurações de cada roteador e calcula um grau de segurança baseado nas caracteristicas abaixo: \n\n
+        • SSID (1 - Oculta, 2 - SSID alterado pelo administrador, 3 - Nome padrão do fabricante) \n
+        • Frequência (1 - 5 GHz ou 2 - 2,4 GHz) \n
+        • Criptografia (1 - WPA2, 2 - WPA ou 3 - WEP/Sem criptografia)\n
+        • Utilização de WPS (1 - Indisponível ou 2 - Disponível)\n
+        
+        A rede é considerada segura, caso ela tenha pelo menos 70% de aprovação. Para sua facilidade, as redes seguras estão sinalizadas na cor Verde.
+        
+   	</string>
+
+
+</resources>

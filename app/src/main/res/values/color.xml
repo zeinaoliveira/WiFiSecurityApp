@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_high">#2F395E</color>
+    <color name="verde_006400">#006400</color>
+    <color name="background_list">#F6F6F6</color>
+
+    <!-- Color status -->
+    <color name="red_high">#ff1919</color>
+    <color name="green_pass">#6FB76F</color>
+
+</resources>
