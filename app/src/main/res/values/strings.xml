@@ -8,7 +8,7 @@
     <string name="about">Sobre</string>
 
     <!-- WiFi List-->
-    <string name="refreshing">Atualizando</string>
+    <string name="refreshed">Lista Atualizada</string>
     <string name="refresh_list">"Lista Atualizada"</string>
     <string name="emptyList">Nenhum roteador encontrado. \nVerifique sua conexão com a internet.</string>
     <string name="hiddenSSID"> Rede oculta </string>

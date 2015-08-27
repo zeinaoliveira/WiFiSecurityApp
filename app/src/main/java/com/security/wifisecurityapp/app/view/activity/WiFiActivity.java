@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,8 +27,6 @@ import java.util.List;
 public class WiFiActivity extends AppCompatActivity {
 
 
-    private TextView txtEmptyList;
-    private TextView editWiFi;
     private ListView lstWifiRouter;
     private InfoWiFi wifiInfo;
     private List<InfoWiFi> wifiList;
@@ -35,22 +34,25 @@ public class WiFiActivity extends AppCompatActivity {
     private WiFiInfoBO wifiInfoBO;
     private WiFiRouterAdapter adapter;
     private AlertDialog informationDialog;
-    private ProgressDialog progressBar;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     /**
      * Initialize objects.
      */
     private void initialize() {
 
-        txtEmptyList = (TextView) findViewById(R.id.txtEmptyList);
-        editWiFi = (TextView) findViewById(R.id.txtEmptyList);
         lstWifiRouter = (ListView) findViewById(R.id.list_wifiRouter);
+
         wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
 
         wifiInfoBO = new WiFiInfoBO();
         wifiList = new ArrayList<>();
 
         informationDialog = new AlertDialog.Builder(this).create();
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
+        mSwipeRefreshLayout.setColorSchemeColors(R.color.blue_high, R.color.red_high, R.color.green_pass);
+
     }
 
     @Override
@@ -61,7 +63,7 @@ public class WiFiActivity extends AppCompatActivity {
         initialize();
         createListRouters();
 
-        lstWifiRouter.setOnItemClickListener(new  AdapterView.OnItemClickListener() {
+        lstWifiRouter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent,
@@ -70,7 +72,24 @@ public class WiFiActivity extends AppCompatActivity {
                 setWiFiInformationDialog(infoWifi);
             }
         });
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mSwipeRefreshLayout.setRefreshing(true);
+                refreshContent();
+
+            }
+        });
     }
+
+    private void refreshContent() {
+        wifiList.clear();
+        createListRouters();
+        mSwipeRefreshLayout.setRefreshing(false);
+        Toast.makeText(this,R.string.refreshed, Toast.LENGTH_SHORT).show();
+    }
+
 
     /**
      * Show informations about network in a dialog.
@@ -105,9 +124,6 @@ public class WiFiActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
-            case R.id.refresh:
-                refresh();
-                return true;
             case R.id.action_about:
                 showAbout();
                 return true;
@@ -121,33 +137,8 @@ public class WiFiActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void refresh() {
-
-        progressBar = ProgressDialog.show(this, getString(R.string.refresh), getString(R.string.refreshing), false,false);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try
-                {
-                    Thread.sleep(3000);
-                } catch(Exception e){}
-                progressBar.dismiss();
-            }
-        }).start();
-        refreshList();
-        txtEmptyList.setText("");
-
-    }
-
-    private void refreshList() {
-        wifiList.clear();
-        createListRouters();
-        Toast.makeText(WiFiActivity.this, R.string.refresh_list, Toast.LENGTH_SHORT).show();
-    }
-
     private void createListRouters() {
-
+        //TODO INCLUIR TRATAMENTO PARA AGUARDAR TERMINO DA PESQUISA E DISPONIBILIDADE DA INTERNET
         if (wifiManager.getScanResults().size() > 0) {
 
             for (int i = 0; i < wifiManager.getScanResults().size(); i++) {
@@ -161,7 +152,8 @@ public class WiFiActivity extends AppCompatActivity {
                 adapter = new WiFiRouterAdapter(this, wifiList);
                 lstWifiRouter.setAdapter(adapter);
             }
-        } else
-            txtEmptyList.setText(R.string.emptyList);
+        } else {
+            //TODO incluir tratamento
+        }
     }
 }
