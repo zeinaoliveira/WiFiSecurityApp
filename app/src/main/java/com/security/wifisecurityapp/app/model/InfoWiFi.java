@@ -32,17 +32,5 @@ public class InfoWiFi{
 	public void setCapabilities(String encryption) {
 		this.capabilities = encryption;
 	}
-	public long getTimestamp() {
-		return timestamp;
-	}
-	public void setTimestamp(long timestamp) {
-		this.timestamp = timestamp;
-	}
-	public int getRssi() {
-		return rssi;
-	}
-	public void setRssi(int rssi) {
-		this.rssi = rssi;
-	}
 
 }

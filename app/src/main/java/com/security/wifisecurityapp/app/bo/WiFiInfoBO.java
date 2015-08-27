@@ -8,17 +8,12 @@ import java.util.List;
 
 public class WiFiInfoBO {
 
-	static final int PARAM_SIZE = 5;
-	static final int FREQUENCY_2400_MIN = 2400;
-    static final int FREQUENCY_2400_MAX = 2499;
-	static final int FREQUENCY_5200 = 5200;
-	private List<String> default_router;
+	private static final int PARAM_SIZE = 5;
+    private static final int FREQUENCY_2400_MAX = 2499;
 	private float insurancePerc;
 
-	InfoWiFi wifiInfo;
-	
-	public List<String> getDefaultRouters() {
-		default_router = new ArrayList<String>();
+	private List<String> getDefaultRouters() {
+		List<String> default_router = new ArrayList<String>();
 		default_router.add("LINKSYS");
 		default_router.add("OI WIFI FON");
         default_router.add("OI WIFI");
@@ -37,25 +32,25 @@ public class WiFiInfoBO {
 
 		return default_router;
 	}
-	
-	public int getssid(InfoWiFi wifiInfo) {
+
+	private int getssid(InfoWiFi wifiInfo) {
 		if (getDefaultRouters().contains(wifiInfo.getSsid().toUpperCase())){
 			return WiFiConstant.LOW;
 		} else
 			if (wifiInfo.getSsid().isEmpty() || wifiInfo.getSsid() == null){
 				return WiFiConstant.HIGH;
-			} else 
+			} else
 				return WiFiConstant.MEDIUM;
 	}
-	
-	public int getFrequency(InfoWiFi wifiInfo) {
+
+	private int getFrequency(InfoWiFi wifiInfo) {
 		if (wifiInfo.getFrequency() < FREQUENCY_2400_MAX ){
 			return WiFiConstant.MEDIUM;
 		} else
 			return WiFiConstant.HIGH;
 	}
 	
-	public int getEncryption(InfoWiFi wifiInfo) {
+	private int getEncryption(InfoWiFi wifiInfo) {
 		
 		int internalDecision = WiFiConstant.LOW;
 		
@@ -72,7 +67,7 @@ public class WiFiInfoBO {
 		return internalDecision;
 	}
 	
-	public int getWPAAlgorithm(InfoWiFi wifiInfo) {
+	private int getWPAAlgorithm(InfoWiFi wifiInfo) {
 		if (wifiInfo.getCapabilities().contains("TKIP"))
 			return WiFiConstant.LOW;
 		else 
@@ -82,7 +77,7 @@ public class WiFiInfoBO {
 				return WiFiConstant.LOW;
 	}
 	
-	public int getWPSAvailabe(InfoWiFi wifiInfo) {
+	private int getWPSAvailabe(InfoWiFi wifiInfo) {
 		if (wifiInfo.getCapabilities().contains("WPS"))
 			return WiFiConstant.LOW;
 		else return WiFiConstant.HIGH;
@@ -92,12 +87,4 @@ public class WiFiInfoBO {
 		insurancePerc = (getssid(wifiInfo) + getWPAAlgorithm (wifiInfo) + getFrequency(wifiInfo) + getWPSAvailabe(wifiInfo) +getEncryption(wifiInfo))/PARAM_SIZE;
 		return  insurancePerc;
 	}
-	
-	public boolean isInsurance() {
-		if (insurancePerc > 70)
-			return true;
-		else
-			return false;
-		
-	} 
 }

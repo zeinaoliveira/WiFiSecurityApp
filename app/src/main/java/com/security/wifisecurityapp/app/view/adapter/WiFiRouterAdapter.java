@@ -20,6 +20,7 @@ import java.util.List;
 public class WiFiRouterAdapter extends ArrayAdapter<InfoWiFi> {
 
     private Context context;
+    private static final int MIN_SECURITY = 70;
     private List<InfoWiFi> data;
 
     public WiFiRouterAdapter(Context context, List<InfoWiFi> infoWifi) {
@@ -74,7 +75,7 @@ public class WiFiRouterAdapter extends ArrayAdapter<InfoWiFi> {
 
         holder.image = (ImageView) convertView.findViewById(R.id.app_icon);
 
-        if (data.get(position).getSecurityofRouter() > 70) {
+        if (data.get(position).getSecurityofRouter() > MIN_SECURITY) {
             holder.txtViewSecurity.setTextColor(Color.GREEN);
             holder.image.setBackgroundResource(R.drawable.lock_green);
         } else {

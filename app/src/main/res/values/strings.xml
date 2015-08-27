@@ -8,7 +8,6 @@
     <string name="refreshing">Atualizando</string>
     <string name="about">Sobre</string>
 
-    <string name="action_settings">Configurações</string>
     <string name="emptyList">Nenhum roteador encontrado.
         \nVerifique sua conexão com a internet.</string>
     <string name="hiddenSSID"> Rede oculta </string>
@@ -17,16 +16,15 @@
     <string name="ssid">"SSID"</string>
     <string name="network_information">"Informações sobre a Rede"</string>
     <string name="frequency">"Frequência"</string>
-    <string name="timestamp">"Timestamp"</string>
     <string name="capabilities">"Capacidades"</string>
     <string name="security_level">"Nivel de segurança"</string>
     
     <string name="txtAboutParameters">
         O WiFiSecurity analisa as configurações do roteador e calcula um grau de segurança baseado nas caracteristicas abaixo: \n\n
-        • SSID \n(1 - Oculta, 2 - SSID alterado, 3 - Nome padrão)\n
-        • Frequência \n(1 - 5 GHz ou 2 - 2,4 GHz)\n
-        • Criptografia \n(1 - WPA2, 2 - WPA ou 3 - WEP/Sem criptografia)\n
-        • Uso do WPS \n(1 - Indisponível ou 2 - Disponível)\n
+        • SSID \n(1 - Oculta, 2 - SSID alterado, 3 - Nome padrão)\n\n
+        • Frequência \n(1 - 5 GHz ou 2 - 2,4 GHz)\n\n
+        • Criptografia \n(1 - WPA2, 2 - WPA ou 3 - WEP/Sem criptografia)\n\n
+        • Uso do WPS \n(1 - Indisponível ou 2 - Disponível)\n\n
         
         A rede é considerada segura, caso ela tenha pelo menos 70% de aprovação. Para sua facilidade, as redes seguras estão sinalizadas na cor Verde.
         

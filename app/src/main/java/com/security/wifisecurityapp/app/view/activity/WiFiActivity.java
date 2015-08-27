@@ -57,7 +57,7 @@ public class WiFiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wi_fi);
-
+        getSupportActionBar().setIcon(R.drawable.icon_navdrawer);
         initialize();
         createListRouters();
 
@@ -75,7 +75,7 @@ public class WiFiActivity extends AppCompatActivity {
     /**
      * Show informations about network in a dialog.
      */
-    public void setWiFiInformationDialog(InfoWiFi infoWifi) {
+    private void setWiFiInformationDialog(InfoWiFi infoWifi) {
         String title;
 
         informationDialog.setTitle(R.string.network_information);
@@ -116,12 +116,12 @@ public class WiFiActivity extends AppCompatActivity {
         }
     }
 
-    public void showAbout() {
+    private void showAbout() {
         Intent intent = new Intent (WiFiActivity.this, AboutActivity.class);
         startActivity(intent);
     }
 
-    public void refresh() {
+    private void refresh() {
 
         progressBar = ProgressDialog.show(this, getString(R.string.refresh), getString(R.string.refreshing), false,false);
 
@@ -140,13 +140,13 @@ public class WiFiActivity extends AppCompatActivity {
 
     }
 
-    public void refreshList() {
+    private void refreshList() {
         wifiList.clear();
         createListRouters();
         Toast.makeText(WiFiActivity.this, R.string.refresh_list, Toast.LENGTH_SHORT).show();
     }
 
-    public void createListRouters() {
+    private void createListRouters() {
 
         if (wifiManager.getScanResults().size() > 0) {
 
